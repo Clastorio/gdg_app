@@ -17,6 +17,12 @@ class _TabsState extends State<Tabs> {
   int bottomNavigationBarIndex = 0;
   Widget currentScreen = const HomeScreen();
 
+  Widget appBarTitle = Image.asset(
+    height: 25,
+    width: 100,
+    fit: BoxFit.contain,
+    'lib/assets/gdg_logo.png',
+  );
   void changeScreen(int index) {
     setState(() {
       bottomNavigationBarIndex = index;
@@ -25,10 +31,17 @@ class _TabsState extends State<Tabs> {
       case 0:
         bottomNavigationBarIndex = 0;
         currentScreen = const HomeScreen();
+        appBarTitle = Image.asset(
+    height: 25,
+    width: 100,
+    fit: BoxFit.contain,
+    'lib/assets/gdg_logo.png',
+  );
         break;
       case 1:
         bottomNavigationBarIndex = 1;
         currentScreen = const EventScreen();
+        appBarTitle = const Text("Event");
         break;
       case 2:
         bottomNavigationBarIndex = 2;
@@ -53,15 +66,7 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Image.asset(
-          height: 25,
-          width: 100,
-          fit: BoxFit.contain,
-          'lib/assets/gdg_logo.png',
-        ),
-      ),
+      appBar: AppBar(centerTitle: true, title: appBarTitle),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blue,

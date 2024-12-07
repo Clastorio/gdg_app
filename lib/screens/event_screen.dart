@@ -3,6 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdg_app/utils/event_provider.dart';
 import 'package:gdg_app/widgets/events_scroll_widget.dart';
 
+enum Event {
+  upcomingEvents,
+  ongoingEvents,
+  pastEvents,
+}
+
 class EventScreen extends ConsumerStatefulWidget {
   const EventScreen({super.key});
 
@@ -25,15 +31,15 @@ class _EventScreenState extends ConsumerState<EventScreen> {
         children: [
           EventsScrollWidget(
             events: upcomingEvents,
-            eventName: 'UPCOMING EVENTS',
+            eventName: Event.upcomingEvents,
           ),
           EventsScrollWidget(
             events: ongoingEvents,
-            eventName: 'ONGOING EVENTS',
+            eventName: Event.ongoingEvents,
           ),
           EventsScrollWidget(
             events: pastEvents,
-            eventName: 'PAST EVENTS',
+            eventName: Event.pastEvents,
           ),
         ],
       ),
